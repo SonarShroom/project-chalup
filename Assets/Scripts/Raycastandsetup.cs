@@ -25,19 +25,18 @@ public class Raycastandsetup : MonoBehaviour
 
     private void Update()
     {
-
+     
 
 
         if (isWeaponon == true)
         {
-            
+          
             if (Input.GetKeyUp(KeyCode.Mouse0))
             {
-                if (canShoot)
-                {
+               
                     Instantiate(bolt, shooter.transform.position, shooter.transform.rotation);
                     canShoot = false;
-                }
+                
                 
             }
         }
