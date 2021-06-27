@@ -16,10 +16,9 @@ public class Raycastandsetup : MonoBehaviour
     //Transform to be used as an instantiation point
     public GameObject shooter;
     //if the bow has been pulled sufficiently to be shot
-    [HideInInspector]
-    public bool canShoot = false;
-  
+    
 
+  
 
 
 
@@ -33,9 +32,9 @@ public class Raycastandsetup : MonoBehaviour
           
             if (Input.GetKeyUp(KeyCode.Mouse0))
             {
-               
-                    Instantiate(bolt, shooter.transform.position, shooter.transform.rotation);
-                    canShoot = false;
+
+                ShootArrow();
+                    
                 
                 
             }
@@ -45,7 +44,7 @@ public class Raycastandsetup : MonoBehaviour
 
 
 
-        Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5F, 0.5F, 0));
+        Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5F, 0.5F, 10));
         RaycastHit hit;
 
 
@@ -61,14 +60,23 @@ public class Raycastandsetup : MonoBehaviour
         }else
         {
             shooter.transform.LookAt(Camera.main.transform.forward * 20000    );
+       
+          
         }
                 
     
     }
-    
+  
 
-    
-   
+    public void ShootArrow()
+    {
+        if (Menu.instance.ArrowCounter != 0)
+        {
+            Instantiate(bolt, shooter.transform.position, shooter.transform.rotation);
+            Menu.instance.RemoveArrow();
+        }
+    }
+
 }
 
 

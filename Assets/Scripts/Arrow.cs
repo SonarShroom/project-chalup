@@ -8,8 +8,10 @@ public class Arrow : MonoBehaviour
     public bool hiting;
     public float speed;
     public float Damage;
+    ArrowPickUp pickupmode;
     private void Start()
     {
+        pickupmode = GetComponent<ArrowPickUp>();
         RB = GetComponent<Rigidbody>();
     }
     // Update is called once per frame
@@ -26,6 +28,7 @@ public class Arrow : MonoBehaviour
         RB.velocity = new Vector3(0,0,0);
 
         RB.isKinematic = true;
-
+        pickupmode.enabled = true;
+        this.enabled = false;
     }
 }
