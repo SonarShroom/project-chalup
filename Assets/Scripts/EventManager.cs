@@ -10,12 +10,23 @@ public class EventManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        PlayerCharacter = GameObject.FindObjectOfType<Player>().gameObject;
     }
     #endregion
 
 
     public GameObject PlayerCharacter;
-    
 
- 
+    private void Start()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
+    private void Update()
+    {
+        if(PlayerCharacter == null)
+        {
+            PlayerCharacter = GameObject.FindObjectOfType<Player>().gameObject;
+        }
+    }
+
 }
