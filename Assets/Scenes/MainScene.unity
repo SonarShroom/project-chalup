@@ -625,9 +625,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - clip: {fileID: 8300000, guid: 391ab88b76fa18a44895ac28d2950584, type: 3}
+  - clip: {fileID: 8300000, guid: 3661854e64ea8b54d882504573dd34bd, type: 3}
     name: Soundtrack01
-    volume: 1
+    volume: 0
     pitch: 0
     loop: 1
     source: {fileID: 0}
