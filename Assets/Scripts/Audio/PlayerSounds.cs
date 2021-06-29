@@ -7,15 +7,39 @@ public class PlayerSounds : MonoBehaviour
     CharacterAudio Audi;
     Menu playmenu;
     float waiter = .5f;
+    Player mainchar;
+    public float stringdrawn;
     private void Start()
     {
         Audi = GetComponent<CharacterAudio>();
         playmenu = Menu.instance;
+        mainchar = EventManager.instance.PlayerCharacter.GetComponent<Player>();
     }
     // Update is called once per frame
-    void Update()
+  
+
+
+
+
+
+    private void Update()
     {
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S)|| Input.GetKey(KeyCode.A)|| Input.GetKey(KeyCode.D))
+
+        if (Input.GetKeyDown(KeyCode.Space) && mainchar.groundcheck)
+        {
+            Audi.SpawnAudio("Jump", transform.position);
+        }
+
+        bool hadground;
+
+        if (hadground = false && mainchar.groundcheck == true)
+        {
+            Audi.SpawnAudio("Land", transform.position);
+        }
+
+        hadground = mainchar.groundcheck;
+
+       if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S)|| Input.GetKey(KeyCode.A)|| Input.GetKey(KeyCode.D))
         {
 
             Sound s = Array.Find(Audi.sounds, Sound => Sound.name == "Footsteps");
@@ -31,12 +55,14 @@ public class PlayerSounds : MonoBehaviour
         }
        if(playmenu.ArrowCounter > 0)
         {
+           
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 Audi.SpawnAudio("DrawBow", transform.position);
             }
             if (Input.GetKeyUp(KeyCode.Mouse0))
             {
+
                 Audi.SpawnAudio("ShootArrow", transform.position);
             }
         }

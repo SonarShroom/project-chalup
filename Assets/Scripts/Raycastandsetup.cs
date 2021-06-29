@@ -16,16 +16,33 @@ public class Raycastandsetup : MonoBehaviour
     //Transform to be used as an instantiation point
     public GameObject shooter;
     //if the bow has been pulled sufficiently to be shot
+    public float stringdrawn;
     
-
   
 
 
 
     private void Update()
     {
-     
-
+        if (Input.GetKey(KeyCode.Mouse0))
+        {
+            stringdrawn -= Time.deltaTime;
+        }
+        
+          if(stringdrawn <= 0) 
+        {
+            if (Input.GetKeyUp(KeyCode.Mouse0))
+            {
+                ShootArrow();
+                stringdrawn = .6f;
+            }
+          
+        }
+          
+               
+            
+               
+        
 
         if (isWeaponon == true)
         {
@@ -33,7 +50,7 @@ public class Raycastandsetup : MonoBehaviour
             if (Input.GetKeyUp(KeyCode.Mouse0))
             {
 
-                ShootArrow();
+              //  ShootArrow();
                     
                 
                 
