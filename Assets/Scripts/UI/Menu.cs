@@ -78,7 +78,11 @@ public class Menu : MonoBehaviour
     }
     public void OpenOptions(GameObject optionsmenu)
     {
-        optionsmenu.SetActive(!optionsmenu.activeSelf);
+        optionsmenu.SetActive(true);
+    }
+    public void CloseOptionsmenu(GameObject optinonsmenu)
+    {
+        optinonsmenu.SetActive(false);
     }
 
 }

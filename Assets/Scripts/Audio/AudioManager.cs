@@ -34,6 +34,7 @@ public class AudioManager : MonoBehaviour
             Debug.Log( "\"" + name + "\"" + " could not be found");
             return;
         }
+        s.source.pitch = s.pitch;
         s.source.Play();
     }
 }

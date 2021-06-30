@@ -8,14 +8,14 @@ public class PlayerSounds : MonoBehaviour
     Menu playmenu;
     float waiter = .5f;
     Player mainchar;
-    public float stringdrawn;
+    public float drawn;
     private void Start()
     {
         Audi = GetComponent<CharacterAudio>();
         playmenu = Menu.instance;
         mainchar = EventManager.instance.PlayerCharacter.GetComponent<Player>();
     }
-    // Update is called once per frame
+  
   
 
 
@@ -41,17 +41,19 @@ public class PlayerSounds : MonoBehaviour
 
        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S)|| Input.GetKey(KeyCode.A)|| Input.GetKey(KeyCode.D))
         {
-
-            Sound s = Array.Find(Audi.sounds, Sound => Sound.name == "Footsteps");
-            s.pitch = UnityEngine.Random.Range(1f,3f);
-
-            if(waiter <= 0)
+            if (hadground == true)
             {
-                Audi.SpawnAudio("Footsteps", transform.position);
-                waiter = .5f;
+                Sound s = Array.Find(Audi.sounds, Sound => Sound.name == "Footsteps");
+                s.pitch = UnityEngine.Random.Range(1f, 2f);
+
+                if (waiter <= 0)
+                {
+                    Audi.Play("Footsteps");
+                  //  Audi.SpawnAudio("Footsteps", transform.position);
+                    waiter = .5f;
+                }
+                waiter -= Time.deltaTime;
             }
-            waiter -= Time.deltaTime;
-             
         }
        if(playmenu.ArrowCounter > 0)
         {

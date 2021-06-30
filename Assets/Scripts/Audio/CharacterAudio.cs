@@ -34,6 +34,7 @@ public class CharacterAudio : MonoBehaviour
     //plays the sound by name
     public void Play(string name)
     {
+
         Sound s = Array.Find(sounds, Sound => Sound.name == name);
 
 
@@ -42,6 +43,11 @@ public class CharacterAudio : MonoBehaviour
             Debug.Log("\"" + name + "\"" + " could not be found");
             return;
         }
+        s.source = gameObject.AddComponent<AudioSource>();
+        s.source.clip = s.clip;
+        s.source.volume = s.volume;
+        s.source.pitch = s.pitch;
+        s.source.loop = s.loop;
         s.source.Play();
     }
     //plays the sound at point overlapping with any current sound
@@ -55,6 +61,7 @@ public class CharacterAudio : MonoBehaviour
             Debug.Log("\"" + name + "\"" + " could not be found");
             return;
         }
+       
         AudioSource.PlayClipAtPoint(s.source.clip, point);
     }
 }
